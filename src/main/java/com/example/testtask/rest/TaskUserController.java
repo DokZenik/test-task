@@ -15,11 +15,11 @@ public class TaskUserController {
     private final TaskUserService taskUserService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskUserDTO> getUser(@PathVariable Long id){
+    public ResponseEntity getUser(@PathVariable Long id){
         try {
             return ResponseEntity.ok(taskUserService.getUser(id));
         }catch (RuntimeException e){
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.status(404).body("User not found");
         }
 
     }
